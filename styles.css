@@ -1,12 +1,33 @@
-body {
+:root {
+    --red: #f45b69;
+    --dark-blue: #000000;
+    --turquoise: #242222;
+    --white: #fff;
+    --pixel-font: 'Roboto';
+    --font-primary: 'Roboto';
+    --font-secondary: 'Roboto' ;
+}
+
+*,
+*::before,
+*::after {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+}
+
+body {
+    font: normal 16px/1.5 var(--font-primary);
+    padding-bottom: 50px;
 }
 
 h1, h2, h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-secondary);
 }
-
 
 a {
     text-decoration: none;
@@ -21,7 +42,7 @@ a:hover {
 /* Header */
 header {
     background: #222;
-    color: #fff;
+    color: var(--white);
     padding: 1rem 0;
     position: fixed;
     width: 100%;
@@ -39,14 +60,14 @@ header nav ul {
 }
 
 header nav a {
-    color: #fff;
+    color: var(--white);
     font-weight: bold;
 }
 
 /* Hero Section */
 #hero {
     background: url(/Images/amazing-pixel-art-scene-dystopian-corporate-office-interior_952778-5784\ \(1\).png) no-repeat center center/cover;
-    color: #fff;
+    color: var(--white);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -69,7 +90,6 @@ header nav a {
     z-index: -1; /* Place the dimmed background behind the text */
 }
 
-
 #hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -82,12 +102,12 @@ header nav a {
 
 .cta-button {
     background: #007bff;
-    color: #fff;
+    color: var(--white);
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
-    font-family: 'Press Start 2P', cursive;
+    font-family: var(--font-tertiary);
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -119,6 +139,151 @@ h2 {
     background: #ddd;
 }
 
+/* TimeLine*/
+.timeline {
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+    color: var(--dark-blue);
+}
+
+.timeline ol {
+    position: relative;
+    list-style: none;
+}
+
+.timeline ol::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--turquoise);
+}
+
+.timeline ol li .item-inner {
+    padding: 20px 180px;
+    margin-bottom: 8vh;
+}
+
+.timeline ol li .time-wrapper {
+    position: relative;
+    font-size: 4.5rem;
+    font-weight: bold;
+    line-height: 0.9;
+}
+
+.timeline ol li .time-wrapper::before,
+.timeline ol li .time-wrapper::after {
+    content: "";
+    position: absolute;
+    background: var(--turquoise);
+}
+
+.timeline ol li .time-wrapper::before {
+    top: 50%;
+    left: -180px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 3px;
+    transition: width 0.8s linear;
+}
+
+.timeline ol li .time-wrapper::after {
+    content: "";
+    position: absolute;
+    background: var(--turquoise);
+    top: calc(50% - 8px);
+    left: -60px;
+    width: 15px; /* Adjust width for block appearance */
+    height: 15px; /* Same height as width for a square */
+    border-radius: 0; /* Remove border-radius for a block shape */
+    transform: scale(0);
+    transform-origin: left center;
+    transition: all 0.4s linear;
+}
+
+.timeline ol li time,
+.timeline ol li .details > * {
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.timeline ol li time {
+    display: inline-block;
+    transform: translateY(-30px);
+}
+
+.timeline ol li .details > * {
+    transform: translateY(30px);
+}
+
+.timeline ol li .details h3 {
+    font-size: 2rem;
+    line-height: 1;
+    margin: 15px 0;
+}
+
+/* ANIMATION STYLES */
+.timeline ol li.in-view .time-wrapper::before {
+    width: 120px;
+}
+
+.timeline ol li.in-view .time-wrapper::after {
+    transition-delay: 0.8s;
+    transform: scale(1.5);
+}
+
+.timeline ol li.in-view time,
+.timeline ol li.in-view .details > * {
+    opacity: 1;
+    transform: none;
+}
+
+.timeline ol li.in-view time {
+    transition-delay: 1.3s;
+}
+
+.timeline ol li.in-view .details h3 {
+    transition-delay: 1.5s;
+}
+
+.timeline ol li.in-view .details p {
+    transition-delay: 1.7s;
+}
+
+/* MQ STYLES */
+@media (max-width: 700px) {
+    .timeline ol li .item-inner {
+        padding: 20px 40px;
+    }
+
+    .timeline ol li .time-wrapper::before {
+        display: none;
+    }
+
+    .timeline ol li .time-wrapper::after {
+        left: -45px;
+        transform-origin: center;
+    }
+
+    .timeline ol li.in-view .time-wrapper::after {
+        transition-delay: 0s;
+    }
+
+    .timeline ol li.in-view time {
+        transition-delay: 0.5s;
+    }
+
+    .timeline ol li.in-view .details h3 {
+        transition-delay: 0.7s;
+    }
+
+    .timeline ol li.in-view .details p {
+        transition-delay: 0.9s;
+    }
+}
 
 /* Projects Section */
 .project-list {
@@ -128,7 +293,7 @@ h2 {
 }
 
 .project-card {
-    background: #fff;
+    background: var(--white);
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 1.5rem;
@@ -145,7 +310,7 @@ h2 {
     display: inline-block;
     margin-top: 1rem;
     background: #007bff;
-    color: #fff;
+    color: var(--white);
     padding: 0.5rem 1rem;
     border-radius: 5px;
 }
@@ -166,7 +331,7 @@ h2 {
 
 .skills-list li {
     background: #007bff;
-    color: #fff;
+    color: var(--white);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 1rem;
@@ -176,7 +341,7 @@ h2 {
 form {
     max-width: 600px;
     margin: 0 auto;
-    background: #fff;
+    background: var(--white);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -200,7 +365,7 @@ form button {
     width: 100%;
     padding: 0.8rem;
     background: #007bff;
-    color: #fff;
+    color: var(--white);
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -214,7 +379,7 @@ form button:hover {
 /* Footer */
 footer {
     background: #222;
-    color: #fff;
+    color: var(--white);
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
