@@ -73,10 +73,9 @@ header nav a {
 #intro-cmd {
     font-family: var(--font-primary);
     background: url(/Images/Computer\ Screen.png) no-repeat center center;
-    background-size: contain; /* Ensure the whole image fits */
-    height: 100vh; /* Full viewport height */
-    width: 100%; /* Full width */
-    
+    background-size: contain;
+    height: 100vh;
+    width: 100%;
 }
 
 #intro-cmd p {
@@ -95,7 +94,6 @@ header nav a {
     position: absolute;
     top: 135px;    
     left: 420px;
-    
 }
 
 .cmd-titlebar {
@@ -117,7 +115,6 @@ header nav a {
 .cmd-buttons {
     display: flex;
     gap: 8px;
-    
 }
 
 .cmd-button {
@@ -135,62 +132,96 @@ header nav a {
     padding: 10px;
     height: calc(100% - 28px);
     overflow-y: auto;
-    
 }
 
 .cmd-output {
     color: #fff;
     font-size: 20px;
     line-height: 1.5;
+    overflow: visible;
     
-  
 }
 
-.cmd-output p{
+.cmd-output p {
     color: #fff;
     font-size: 45px;
     line-height: 1.4;
     margin-bottom: -20px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
 }
 
 .cmd-line {
     font-size: 25px;
-    margin: 1px ;
+    margin: 1px;
     display: flex;
     align-items: center;
     gap: 5px;
     font-family: var(--font-primary);
+    opacity: 0;
 }
 
 .cmd-prompt {
     color: #fff;
+    opacity: 1; /* Keep prompt always visible */
 }
 
-.cmd-text {
+/* Typing animation for each command line */
+.cmd-line:nth-child(4) {
+    opacity: 1; /* First prompt visible immediately */
+}
 
-    color: #fff;
+.cmd-line:nth-child(4) .cmd-text {
     width: 0;
+    animation: typing 3s 1s steps(20, end) forwards; /* Slower typing */
+}
+
+/* Response to "Who am I" */
+.cmd-line:nth-child(5) {
+    animation: fadeIn 0.2s 4s forwards; /* Adjusted to allow slower typing */
+}
+
+/* Employment condition response */
+.cmd-line:nth-child(6) {
+    animation: fadeIn 0.2s 5s forwards; /* Adjusted to match new timing */
+}
+
+/* Status prompt and command */
+.cmd-line:nth-child(7) {
+    animation: fadeIn 0.2s 6s forwards;
+}
+
+.cmd-line:nth-child(7) .cmd-text {
+    width: 0;
+    animation: typing 3s 6.1s steps(20, end) forwards; /* Slower typing */
+}
+
+/* Status response */
+.cmd-line:nth-child(8) {
+    animation: fadeIn 0.2s 9.1s forwards; /* Adjusted for new timing */
+}
+
+/* Execute prompt and command */
+.cmd-line:nth-child(9) {
+    animation: fadeIn 0.2s 10s forwards;
+}
+
+.cmd-line:nth-child(9) .cmd-text {
+    width: 0;
+    animation: typing 3s 10.2s steps(20, end) forwards; /* Slower typing */
+}
+
+
+.cmd-text {
+    color: #fff;
     white-space: nowrap;
     overflow: hidden;
-    animation: typeText 1s steps(10) forwards;
+    width: 0;
 }
 
 .cmd-response {
     color: rgb(7, 255, 7);
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-    animation-delay: 1s;
 }
-
-.cmd-cursor {
-    width: 8px;
-    height: 16px;
-    background: #fff;
-    display: inline-block;
-    margin-left: 4px;
-    animation: blink 1s infinite;
-}
-
 
 #intro-cmd .loader h2 {
     position: absolute;
@@ -208,6 +239,7 @@ header nav a {
 }
 
 .loader {
+    display: none;
     top: 450px;
     width: 400px; 
     margin: 150px auto 70px; 
@@ -248,9 +280,62 @@ header nav a {
 
 .loader  h2{
     position: absolute;
-    animation: bounce 4s linear infinite;
+    animation: bounce 2s linear infinite;
+}
+/* Animation keyframes */
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #fff; }
+}
+
+
+
+@keyframes windowAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typeText {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveDots {
+    0% { content: ''; }
+    33% { content: '.'; }
+    66% { content: '..'; }
+
+}
 
 @keyframes load {
     0% {
@@ -279,15 +364,23 @@ header nav a {
 }
 
 @keyframes bounce {
-    0%,
-    100% {
-        top: 10px;
+    0% {
+        top: 15px;
     }
 
-    12.5% {
+    50% {
+        top: 20px;
+    }
+
+    100% {
         top: 15px;
     }
 }
+
+.element {
+    animation: bounce 1s ease-in-out infinite;
+}
+
 
 
 /* Animations */
