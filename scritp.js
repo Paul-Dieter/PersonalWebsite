@@ -21,13 +21,8 @@ for (const target of targets) {
   observer.observe(target);
 }
 
-/* Loading bar delay */
-document.addEventListener("DOMContentLoaded", function () {
-  // Set the delay in milliseconds (e.g., 5000ms = 5 seconds)
-  const delay = 5000;
-
-  // Show the loader after the delay
-  setTimeout(() => {
-      document.querySelector(".loader").style.display = "block";
-  }, delay);
-});
+window.onload = function() {
+  setTimeout(function() {
+    document.querySelector('.loader').style.display = 'block';
+  }, 1000); // Delay in milliseconds (1000ms = 1 second)
+};
