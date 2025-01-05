@@ -60,7 +60,7 @@ header nav ul {
     gap: 2rem;
     margin: 0;
     padding: 0;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 }
 
 header nav a {
@@ -68,74 +68,294 @@ header nav a {
     font-weight: bold;
 }
 
-/* Intro Section */
-#intro {
-    background: url(/Videos/darkScene.gif) no-repeat center center/cover;
-    color: var(--white);
-    height: 100vh;
-    position: relative;
+
+/* cmd */ 
+#intro-cmd {
+    font-family: var(--font-primary);
+    background: url(/Images/Computer\ Screen.png) no-repeat center center;
+    background-size: contain; /* Ensure the whole image fits */
+    height: 100vh; /* Full viewport height */
+    width: 100%; /* Full width */
+    
+}
+
+#intro-cmd p {
+    font-family: var(--font-primary);
+}
+
+.cmd-window {
+    width: 1060px;
+    height: 500px;
+    background: #00000043;
+    border: 3px ridge #ffffff40;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: windowAppear 0.3s forwards;
+    position: absolute;
+    top: 135px;    
+    left: 420px;
+    
+}
+
+.cmd-titlebar {
+    background: #1f1f1f;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.cmd-title {
+    color: #fff;
+    font-size: 16px;
+    font-family: var(--font-primary);
+}
+
+.cmd-buttons {
+    display: flex;
+    gap: 8px;
+    
+}
+
+.cmd-button {
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cmd-content {
+    padding: 10px;
+    height: calc(100% - 28px);
+    overflow-y: auto;
+    
+}
+
+.cmd-output {
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.5;
+    
+  
+}
+
+.cmd-output p{
+    color: #fff;
+    font-size: 45px;
+    line-height: 1.4;
+    margin-bottom: -20px;
+}
+
+.cmd-line {
+    font-size: 25px;
+    margin: 1px ;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-primary);
+}
+
+.cmd-prompt {
+    color: #fff;
+}
+
+.cmd-text {
+
+    color: #fff;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typeText 1s steps(10) forwards;
+}
+
+.cmd-response {
+    color: rgb(7, 255, 7);
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: 1s;
+}
+
+.cmd-cursor {
+    width: 8px;
+    height: 16px;
+    background: #fff;
+    display: inline-block;
+    margin-left: 4px;
+    animation: blink 1s infinite;
+}
+
+
+#intro-cmd .loader h2 {
+    position: absolute;
+    top: 74%;
+    left: 80px;
+    font-size: 46px;
+    margin: 0;
+    color: white;
+    font-family: var(--font-primary);
+}
+
+#intro-cmd h2::after {
+    content: '...';
+    animation: moveDots 6s steps(3) infinite;
+}
+
+.loader {
+    top: 450px;
+    width: 400px; 
+    margin: 150px auto 70px; 
+    position: relative; 
     text-align: center;
 }
 
-#intro h1,
-#intro p,
-.cta-button {
-    position: absolute;
-    margin: 0;
-    mix-blend-mode: difference;
-    animation: blendIn 2s ease-in-out infinite alternate;  /* Same timing for all elements */
+.loader .loading-text {
+    font-family: 'Roboto', sans-serif; /* Optional: Use the font you like */
+    font-size: 160px;
+    color: yellowgreen;
+
 }
 
-#intro h1 {
-    top: 58%;
-    left: 66%;
-    rotate: 8deg; 
-    font-size: 0.9rem;
-    color: #dddddd;
-}
 
-#intro p {
-    top: 63%;
-    left: 66%;
-    rotate: 9deg; 
-    font-size: 1.5rem;
-}
-
-.cta-button {
-    top: 55%;
-    left: 50.3%;
-    transform: translateX(-50%);
-    padding: 0.5rem 1rem;
-    background: #b9bcbf00;
-    color: #ffffff;
-    border: none;
+.loader .loading_1 {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    border: 1px solid yellowgreen;
     border-radius: 10px;
-    font-size: 1.8rem;
-    font-family: var(--font-tertiary);
-    cursor: pointer;
-    transition: background 0.3s;
-    font-size: 2.5rem;
+    animation: turn 4s linear 1.75s infinite;
+    margin-top: 20px; /* Ensures space between loading bar and previous content */
 }
 
-.cta-button:hover {
-    background: #aaaaaa00;
-    color: #ddd;
-    animation-play-state: paused;
+.loader .loading_1:before {
+    border-radius: 100px;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background-color: yellowgreen;
+    box-shadow: 10px 0px 15px 0px yellowgreen;
+    animation: load 2s linear infinite;
+    
+}
+
+.loader  h2{
+    position: absolute;
+    animation: bounce 4s linear infinite;
+}
+
+
+@keyframes load {
+    0% {
+        width: 0%;
+    }
+
+    87.5% {
+        width: 100%;
+    }
+}
+
+@keyframes turn {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    6.25%,
+    50% {
+        transform: rotateY(180deg);
+    }
+
+    56.25%,
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        top: 10px;
+    }
+
+    12.5% {
+        top: 15px;
+    }
+}
+
+
+/* Animations */
+@keyframes windowAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typeText {
+    from { 
+        width: 0; 
+    }
+    to { 
+        width: 100%; 
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+    }
+    to { 
+        opacity: 1; 
+    }
+}
+
+@keyframes blink {
+    0%, 100% { 
+        opacity: 1; 
+    }
+    50% { 
+        opacity: 0; 
+    }
+}
+
+/* Custom scrollbar */
+.cmd-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cmd-content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.cmd-content::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.cmd-content::-webkit-scrollbar-thumb:hover {
+    background: #444;
 }
 
 /* Blend animation */
 @keyframes blendIn {
     0% {
-        opacity: 0.4;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.653);
     }
     50% {
-        opacity: 0.7;
-        text-shadow: 0 0 15px rgba(7, 6, 6, 0.7);
+        opacity: 0.8;
+        text-shadow: 0 0 15px rgb(255, 255, 255);
     }
     100% {
-        opacity: 1;
-        text-shadow: 0 0 20px rgba(9, 8, 8, 0.9);
+        opacity: 0.9;
+        text-shadow: 0 0 20px rgb(255, 255, 255);
     }
 }
 
