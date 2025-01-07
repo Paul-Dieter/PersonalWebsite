@@ -1,0 +1,558 @@
+/*carosel*/
+
+
+/*Logo Slider*/
+/* carousel */
+.carousel{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+#carousel_h2 {
+    background-color: rgba(139, 139, 139, 0.444);
+    position: relative;
+    top: 0; /* Position at the top */
+    left: 50%; /* Start at the middle horizontally */
+    transform: translateX(-50%); /* Center horizontally by shifting half its width */
+    font-size: 86px;
+    padding: 50px;
+    color: rgb(0, 0, 0);
+    font-family: var(--font-primary);
+    z-index: 999;
+    margin: 0px;
+  
+}
+
+.carousel .list .item{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.carousel .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel .list .item .content{
+    position: absolute;
+    top: 20%;
+    width: 1140px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    color: #fff;
+    text-shadow: 0 5px 10px #0004;
+}
+.carousel .list .item .author{
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+.carousel .list .item .title,
+.carousel .list .item .topic{
+    font-size: 5em;
+    font-weight: bold;
+    line-height: 1.3em;
+}
+.carousel .list .item .topic{
+    color: #f1683a;
+}
+.carousel .list .item .buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+}
+.carousel .list .item .buttons button{
+    border: none;
+    background-color: #eee;
+    letter-spacing: 3px;
+    font-family: Poppins;
+    font-weight: 500;
+}
+.carousel .list .item .buttons button:nth-child(2){
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #eee;
+}
+/* thumbail */
+.thumbnail{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+.thumbnail .item{
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.thumbnail .item .content{
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+.thumbnail .item .content .title{
+    font-weight: 500;
+}
+.thumbnail .item .content .description{
+    font-weight: 300;
+}
+/* arrows */
+.scroll_arrows{
+    position: absolute;
+    top: 80%;
+    right: 52%;
+    z-index: 100;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.scroll_arrows button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    color: #fff;
+    font-family: monospace;
+    font-weight: bold;
+    transition: .5s;
+}
+.scroll_arrows button:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+/* animation */
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+
+/* animation text in first item */
+
+.carousel .list .item:nth-child(1) .content .author,
+.carousel .list .item:nth-child(1) .content .title,
+.carousel .list .item:nth-child(1) .content .topic,
+.carousel .list .item:nth-child(1) .content .des,
+.carousel .list .item:nth-child(1) .content .buttons
+{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s 1s linear 1 forwards;
+}
+@keyframes showContent{
+    to{
+        transform: translateY(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+.carousel .list .item:nth-child(1) .content .title{
+    animation-delay: 1.2s!important;
+}
+.carousel .list .item:nth-child(1) .content .topic{
+    animation-delay: 1.4s!important;
+}
+.carousel .list .item:nth-child(1) .content .des{
+    animation-delay: 1.6s!important;
+}
+.carousel .list .item:nth-child(1) .content .buttons{
+    animation-delay: 1.8s!important;
+}
+/* create animation when next click */
+.carousel.next .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage .5s linear 1 forwards;
+}
+@keyframes showImage{
+    to{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.carousel.next .thumbnail .item:nth-last-child(1){
+    overflow: hidden;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.prev .list .item img{
+    z-index: 100;
+}
+@keyframes showThumbnail{
+    from{
+        width: 0;
+        opacity: 0;
+    }
+}
+.carousel.next .thumbnail{
+    animation: effectNext .5s linear 1 forwards;
+}
+
+@keyframes effectNext{
+    from{
+        transform: translateX(150px);
+    }
+}
+
+/* running time */
+
+.carousel .time{
+    position: absolute;
+    z-index: 1000;
+    width: 0%;
+    height: 3px;
+    background-color: #f1683a;
+    left: 0;
+    top: 0;
+}
+
+.carousel.next .time,
+.carousel.prev .time{
+    animation: runningTime 3s linear 1 forwards;
+}
+@keyframes runningTime{
+    from{ width: 100%}
+    to{width: 0}
+}
+
+
+/* prev click */
+
+.carousel.prev .list .item:nth-child(2){
+    z-index: 2;
+}
+
+.carousel.prev .list .item:nth-child(2) img{
+    animation: outFrame 0.5s linear 1 forwards;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@keyframes outFrame{
+    to{
+        width: 150px;
+        height: 220px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 20px;
+    }
+}
+
+.carousel.prev .thumbnail .item:nth-child(1){
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.next .scroll_arrows button,
+.carousel.prev .scroll_arrows button{
+    pointer-events: none;
+}
+.carousel.prev .list .item:nth-child(2) .content .author,
+.carousel.prev .list .item:nth-child(2) .content .title,
+.carousel.prev .list .item:nth-child(2) .content .topic,
+.carousel.prev .list .item:nth-child(2) .content .des,
+.carousel.prev .list .item:nth-child(2) .content .buttons
+{
+    animation: contentOut 1.5s linear 1 forwards!important;
+}
+
+@keyframes contentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 678px) {
+    .carousel .list .item .content{
+        padding-right: 0;
+    }
+    .carousel .list .item .content .title{
+        font-size: 30px;
+    }
+}
+
+/*timeline*/
+
+/* TimeLine*/
+.timeline {
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+    color: var(--dark-blue);
+}
+
+.timeline ol {
+    position: relative;
+    list-style: none;
+}
+
+.timeline ol::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--turquoise);
+}
+
+.timeline ol li .item-inner {
+    padding: 20px 180px;
+    margin-bottom: 8vh;
+}
+
+.timeline ol li .time-wrapper {
+    position: relative;
+    font-size: 4.5rem;
+    font-weight: bold;
+    line-height: 0.9;
+}
+
+.timeline ol li .time-wrapper::before,
+.timeline ol li .time-wrapper::after {
+    content: "";
+    position: absolute;
+    background: var(--turquoise);
+}
+
+.timeline ol li .time-wrapper::before {
+    top: 50%;
+    left: -180px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 3px;
+    transition: width 0.8s linear;
+}
+
+.timeline ol li .time-wrapper::after {
+    content: "";
+    position: absolute;
+    background: var(--turquoise);
+    top: calc(50% - 8px);
+    left: -60px;
+    width: 15px; /* Adjust width for block appearance */
+    height: 15px; /* Same height as width for a square */
+    border-radius: 0; /* Remove border-radius for a block shape */
+    transform: scale(0);
+    transform-origin: left center;
+    transition: all 0.4s linear;
+}
+
+.timeline ol li time,
+.timeline ol li .details > * {
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.timeline ol li time {
+    display: inline-block;
+    transform: translateY(-30px);
+}
+
+.timeline ol li .details > * {
+    transform: translateY(30px);
+}
+
+.timeline ol li .details h3 {
+    font-size: 2rem;
+    line-height: 1;
+    margin: 15px 0;
+}
+
+/* ANIMATION STYLES */
+.timeline ol li.in-view .time-wrapper::before {
+    width: 120px;
+}
+
+.timeline ol li.in-view .time-wrapper::after {
+    transition-delay: 0.8s;
+    transform: scale(1.5);
+}
+
+.timeline ol li.in-view time,
+.timeline ol li.in-view .details > * {
+    opacity: 1;
+    transform: none;
+}
+
+.timeline ol li.in-view time {
+    transition-delay: 1.3s;
+}
+
+.timeline ol li.in-view .details h3 {
+    transition-delay: 1.5s;
+}
+
+.timeline ol li.in-view .details p {
+    transition-delay: 1.7s;
+}
+
+/* MQ STYLES */
+@media (max-width: 700px) {
+    .timeline ol li .item-inner {
+        padding: 20px 40px;
+    }
+
+    .timeline ol li .time-wrapper::before {
+        display: none;
+    }
+
+    .timeline ol li .time-wrapper::after {
+        left: -45px;
+        transform-origin: center;
+    }
+
+    .timeline ol li.in-view .time-wrapper::after {
+        transition-delay: 0s;
+    }
+
+    .timeline ol li.in-view time {
+        transition-delay: 0.5s;
+    }
+
+    .timeline ol li.in-view .details h3 {
+        transition-delay: 0.7s;
+    }
+
+    .timeline ol li.in-view .details p {
+        transition-delay: 0.9s;
+    }
+}
+
+/* Projects Section */
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.view-project {
+    display: inline-block;
+    margin-top: 1rem;
+    background: #007bff;
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.view-project:hover {
+    background: #0056b3;
+}
+
+/* Skills Section */
+.skills-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.skills-list li {
+    background: #007bff;
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+/* Contact Section */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #007bff;
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #0056b3;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #007bff;
+}
+
+footer a:hover {
+    color: #0056b3;
+}
