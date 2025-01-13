@@ -1,6 +1,6 @@
 /* Base Styles */
 :root {
-    --primary-color: #3b82f6;
+    --primary-color: #001685;
     --primary-dark: #2563eb;
     --text-dark: #1f2937;
     --text-light: #6b7280;
@@ -194,16 +194,51 @@ section:nth-child(even) {
 }
 
 /* About Section */
+.about {
+    padding: 3rem 0; /* Add spacing above and below the section */
+}
+
+.about h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color); /* Customize heading color */
+}
+
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    align-items: start; /* Ensure content is aligned properly */
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.about-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .info-card {
     background: var(--white);
     padding: 1.5rem;
     border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.info-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add hover effect for a subtle elevation */
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
@@ -214,6 +249,26 @@ section:nth-child(even) {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
+    margin-top: 1rem;
+}
+
+.resume-link i {
+    font-size: 1.1rem;
+}
+
+/* Responsive Design for about section */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* Stack the text and cards on top of each other */
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .about-cards {
+        flex-direction: column;
+    }
 }
 
 /* Skills Section */
