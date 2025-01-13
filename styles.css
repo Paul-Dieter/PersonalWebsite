@@ -370,32 +370,38 @@ section:nth-child(even) {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .mobile-menu-btn {
-        display: block; /* Show the burger icon on small screens */
+        display: block;
+        position: absolute;
+        top: 1rem; /* Adjust based on your layout */
+        right: 1rem; /* Adjust based on your layout */
+        z-index: 1000; /* Ensure it's above other elements */
     }
 
     .nav-links {
-        display: none; /* Hide the links initially */
-        position: fixed;
+        display: none;
+        flex-direction: column;
+        position: absolute;
         top: var(--header-height);
         right: 0;
-        width: 100%;
-        height: 100%;
         background-color: var(--white);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        width: 200px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-        transform: translateX(100%); /* Hide off-screen initially */
     }
 
+    .nav-links li {
+        list-style: none; /* Remove default list styling */
+        text-decoration: none;
+        padding: 0.6rem;
+    }
+
+    /* Show the nav-links when the burger icon is clicked */
     .nav-links.active {
-        transform: translateX(0); /* Slide the menu in */
+        display: flex;
     }
 
-    .nav-links a {
-        padding: 1rem 0;
-        font-size: 1.25rem;
+    /* Ensure burger icon stays visible even when the menu is open */
+    .mobile-menu-btn.active {
+        display: block; /* Keeps the burger icon visible */
     }
 }
 
@@ -416,6 +422,7 @@ section:nth-child(even) {
 
     .nav-links li {
         list-style: none; /* Remove default list styling */
+        text-decoration: none;
     }
 
     .nav-links a {
@@ -435,5 +442,3 @@ section:nth-child(even) {
         display: none; /* Hide burger icon on larger screens */
     }
 }
-
-
