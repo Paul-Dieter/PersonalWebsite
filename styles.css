@@ -1,538 +1,439 @@
+/* Base Styles */
 :root {
-    --red: #f45b69;
-    --dark-blue: #000000;
-    --turquoise: #242222;
-    --white: #fff;
-    --font-primary: 'VT323';
-    --font-secondary: 'Press Start 2P' ;
+    --primary-color: #3b82f6;
+    --primary-dark: #2563eb;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f3f4f6;
+    --white: #ffffff;
+    --max-width: 1200px;
+    --header-height: 70px;
+    --overlay-color: rgba(0, 0, 0, 0.5); /* Dark overlay for the mobile menu */
 }
-*,
-*::before,
-*::after {
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-a {
-    color: inherit;
-}
-
-p{
-    font-size: 1.8rem;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font: normal 16px/1.5 var(--font-primary);
-    margin: 0; /* Ensure no extra space is added */
-    padding: 0; /* Remove bottom padding */
-}
-
-h1, h2, h3 {
-    font-family: var(--font-secondary);
-}
-
-a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-/* Header */
-header {
-    background: #222;
-    color: var(--white);
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-    font-size: 1.8rem;
-}
-
-header nav a {
-    color: var(--white);
-    font-weight: bold;
-}
-
-
-/* cmd */ 
-#intro-cmd {
-    font-family: var(--font-primary);
-    background: url(/Images/Computer\ Screen.png) no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-    margin-bottom: 0px;
-}
-
-#intro-cmd p {
-    font-family: var(--font-primary);
-}
-
-.cmd-window {
-    width: 1060px;
-    height: 500px;
-    background: #00000043;
-    border: 3px ridge #ffffff40;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    animation: windowAppear 0.3s forwards;
-    position: absolute;
-    top: 135px;    
-    left: 420px;
-}
-
-.cmd-titlebar {
-    background: #1f1f1f;
-    padding: 4px 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.cmd-title {
-    color: #fff;
-    font-size: 16px;
-    font-family: var(--font-primary);
-}
-
-.cmd-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-.cmd-button {
-    color: #fff;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.cmd-content {
-    padding: 10px;
-    height: calc(100% - 28px);
-    overflow-y: auto;
-}
-
-.cmd-output {
-    color: #fff;
-    font-size: 20px;
+    font-family: 'Inter', sans-serif;
     line-height: 1.5;
-    overflow: visible;
-    
+    color: var(--text-dark);
 }
 
-.cmd-output p {
-    color: #fff;
-    font-size: 45px;
-    line-height: 1.4;
-    margin-bottom: -20px;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
-.cmd-line {
-    font-size: 25px;
-    margin: 1px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: var(--font-primary);
-    opacity: 0;
-    width: fit-content; /* Ensure container resizes based on content */
+/* Typography */
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-.cmd-text {
-    color: #fff;
-    opacity: 1; /* Keep prompt always visible */
-    position: relative; /* To position the cursor */
-    padding-right: 8px;
-    width: fit-content; /* Make the width adapt to the content */
-
-}
-
-
-/* General cursor style - keep as is */
-.cmd-text::after {
-    display: inline-block;
-    content: '█';
-    position: absolute;
-    right: -10px;
-}
-
-/* Keep all your original animations, just modify the cursor ones */
-.cmd-line:nth-child(4) {
-    opacity: 1;
-}
-
-.cmd-line:nth-child(4) .cmd-text {
-    width: 0;
-    animation: typing 1s 1s steps(20, end) forwards;
-}
-
-.cmd-line:nth-child(4) .cmd-text::after {
-    animation: blink 0.7s 1s step-end 3, disappear 0.1s 5s forwards;
-}
-
-.cmd-line:nth-child(5) {
-    animation: fadeIn 0.2s 4s forwards;
-}
-
-.cmd-line:nth-child(6) {
-    animation: fadeIn 0.2s 5s forwards;
-}
-
-.cmd-line:nth-child(7) {
-    animation: fadeIn 0.2s 6s forwards;
-}
-
-.cmd-line:nth-child(7) .cmd-text {
-    width: 0;
-    animation: typing 3s 6.1s steps(20, end) forwards;
-}
-
-.cmd-line:nth-child(7) .cmd-text::after {
-    animation: blink 0.7s 6.1s step-end 3, disappear 0.1s 10s forwards;
-}
-
-.cmd-line:nth-child(8) {
-    animation: fadeIn 0.2s 9.1s forwards;
-}
-
-.cmd-line:nth-child(9) {
-    animation: fadeIn 0.2s 10s forwards;
-}
-
-.cmd-line:nth-child(9) .cmd-text {
-    width: 0;
-    animation: typing 3s 10.2s steps(20, end) forwards;
-}
-
-.cmd-line:nth-child(9) .cmd-text::after {
-    animation: blink 0.7s step-end infinite;
-}
-
-/* Keep your original animations */
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink {
-    50% { opacity: 0; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Add just this new animation for the cursor disappearance */
-@keyframes disappear {
-    to { opacity: 0; }
-}
-
-
-/* Keyframe for disappearing cursor */
-
-
-
-
-.cmd-text {
-    color: #fff;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    font-family: var(--font-primary);
-    
-}
-
-.cmd-response {
-    color: rgb(7, 255, 7);
-}
-
-#intro-cmd .loader h2 {
-    position: absolute;
-    top: 74%;
-    left: 80px;
-    font-size: 86px;
-    margin: 0;
-    color: white;
-    font-family: var(--font-primary);
-}
-
-#intro-cmd h2::after {
-    content: '⇩⇩⇩';
-    animation: movearrows 6s steps(3) infinite;
-}
-
-
-.loader {
-    display: none;
-    left: 330px;
-    top: 350px;
-    width: 400px; 
-    margin: 150px auto 70px; 
-    position: absolute; 
-    text-align: center;
-    
-}
-
-.loader .loading-text {
-    color: rgb(203, 207, 203);
-    font-size: 3rem;
-}
-
-
-
-.arrows {
-    display: inline-block;
-    position: relative;
-    color: rgba(255, 255, 255, 0.476);
-    font-size: 3rem;
-    left: -76px;
-  }
-  
-  .arrows::after {
-    content: '';
-    display: inline-block;
-    width: 0;
-    height: 4px;
-    background-color: black;
-    animation: dot-blink 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  }
-  
-
-
-.loader  h2{
-    position: absolute;
-    animation: bounce 2s linear infinite;
-}
-
-/* Animation keyframes */
-@keyframes dot-blink {
-    0% {
-        opacity: 0;
-        content: '';
-      }
-      50% {
-        opacity: 1;
-        content: '⇩⇩⇩⇩⇩';
-      }
-      100% {
-        opacity: 0;
-        content: '⇩⇩⇩⇩⇩';
-      }
-    }
-
-
-@keyframes disappear {
-    0% {
-        opacity: 1; /* Cursor visible during typing */
-    }
-    100% {
-        opacity: 0; /* Cursor disappears once typing is finished */
-    }
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: #fff; }
-}
-
-
-
-@keyframes windowAppear {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes typeText {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-
-@keyframes bounce {
-    0% {
-        top: 15px;
-    }
-
-    50% {
-        top: 20px;
-    }
-
-    100% {
-        top: 15px;
-    }
-}
-
-.element {
-    animation: bounce 1s ease-in-out infinite;
-}
-
-
-
-/* Animations */
-@keyframes windowAppear {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes typeText {
-    from { 
-        width: 0; 
-    }
-    to { 
-        width: 100%; 
-    }
-}
-
-@keyframes fadeIn {
-    from { 
-        opacity: 0; 
-    }
-    to { 
-        opacity: 1; 
-    }
-}
-
-@keyframes blink {
-    0%, 100% { 
-        opacity: 1; 
-    }
-    50% { 
-        opacity: 0; 
-    }
-}
-
-/* Custom scrollbar */
-.cmd-content::-webkit-scrollbar {
-    width: 8px;
-}
-
-.cmd-content::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-
-.cmd-content::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-}
-
-.cmd-content::-webkit-scrollbar-thumb:hover {
-    background: #444;
-}
-
-/* Blend animation */
-@keyframes blendIn {
-    0% {
-        opacity: 1;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.653);
-    }
-    50% {
-        opacity: 0.8;
-        text-shadow: 0 0 15px rgb(255, 255, 255);
-    }
-    100% {
-        opacity: 0.9;
-        text-shadow: 0 0 20px rgb(255, 255, 255);
-    }
-}
-
-/* Optional blend mode classes */
-.blend-multiply {
-    mix-blend-mode: multiply;
-}
-
-.blend-screen {
-    mix-blend-mode: screen;
-}
-
-.blend-overlay {
-    mix-blend-mode: overlay;
-}
-
-.blend-soft-light {
-    mix-blend-mode: soft-light;
-}
-
-.blend-hard-light {
-    mix-blend-mode: hard-light;
-}
-
-/* Section Styles */
-section {
-    padding: 5rem 2rem;
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 h2 {
-    text-align: center;
+    font-size: 2rem;
     margin-bottom: 2rem;
 }
 
-.about-content {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    font-size: 2rem;
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.about-content .avatar {
-    width: 250px;
-    height: 200px;
-    border-radius: 50%;
-    background: #ddd;
+p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
 }
+
+/* Header & Navigation */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    height: var(--header-height);
+}
+
+.nav-content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.25rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.nav-links.active {
+    display: flex;
+    position: fixed; /* Fix the menu in place */
+    top: 0;
+    right: 0;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    background-color: var(--white); /* Background color of the full screen menu */
+    flex-direction: column; /* Stack the links vertically */
+    justify-content: center; /* Center the links */
+    align-items: center; /* Center horizontally */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 1rem 0; /* Add padding for better spacing */
+    font-size: 1.25rem; /* Larger font size for mobile menu */
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    padding: calc(var(--header-height) + 4rem) 0 4rem;
+    background: linear-gradient(to right, #eff6ff, #eef2ff);
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-light);
+}
+
+/* Sections */
+section {
+    padding: 4rem 0;
+}
+
+section:nth-child(even) {
+    background: var(--bg-light);
+}
+
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.info-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.resume-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card h3 {
+    margin-bottom: 1rem;
+}
+
+.skill-card ul {
+    list-style: none;
+}
+
+.skill-card li {
+    margin-bottom: 0.5rem;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.project-link:hover {
+    color: var(--primary-dark);
+}
+
+/* Experience Section */
+.experience-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.experience-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.experience-card ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.experience-card li {
+    margin-bottom: 0.5rem;
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.contact-info {
+    max-width: 500px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--bg-light);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 0.5rem;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: var(--primary-dark);
+}
+
+/* Footer */
+.footer {
+    background: var(--bg-light);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer p {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+#currentYear {
+    font-weight: 600;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block; /* Show the burger icon on small screens */
+    }
+
+    .nav-links {
+        display: none; /* Hide the links initially */
+        position: fixed;
+        top: var(--header-height);
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Hide off-screen initially */
+    }
+
+    .nav-links.active {
+        transform: translateX(0); /* Slide the menu in */
+    }
+
+    .nav-links a {
+        padding: 1rem 0;
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        justify-content: space-around; /* Distribute items evenly */
+        align-items: center; /* Vertically align items */
+        top: auto;
+        right: auto;
+        box-shadow: none;
+        margin: 0; /* Remove default margin */
+        padding: 0; /* Remove default padding */
+        flex-wrap: nowrap; /* Prevent wrapping */
+    }
+
+    .nav-links li {
+        list-style: none; /* Remove default list styling */
+    }
+
+    .nav-links a {
+        text-decoration: none; /* Remove underline from links */
+        color: #000; /* Set link color */
+        padding: 10px 15px; /* Add some padding to each link */
+        display: inline-block; /* Make links behave as blocks */
+        transition: color 0.3s ease; /* Smooth color change on hover */
+        white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    .nav-links a:hover {
+        color: #007BFF; /* Change color on hover */
+    }
+
+    .mobile-menu-btn {
+        display: none; /* Hide burger icon on larger screens */
+    }
+}
+
+

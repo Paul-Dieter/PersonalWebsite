@@ -3,80 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paul-Dieter Brandt</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-
+    <title>Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-content">
+                <h1 class="logo">Your Name</h1>
+                <button class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <!-- Intro Section -->
-    <section id="intro-cmd">
-      <div class="cmd-window">
-        <div class="cmd-titlebar">
-            <div class="cmd-title">Command Prompt</div>
-            <div class="cmd-buttons">
-                <span class="cmd-button minimize">−</span>
-                <span class="cmd-button maximize">□</span>
-                <span class="cmd-button close">×</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Software Engineering Graduate</h1>
+                <p>Passionate about creating efficient, scalable solutions and turning complex problems into elegant code.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                </div>
             </div>
         </div>
-        <div class="cmd-content">
-            <div class="cmd-output">
-              <p>Microsoft Windows [Version 10.0.19045.3930]</p>
-              <p>(c) Microsoft Corporation. All rights reserved.</p>
-              <p>&nbsp;</p>
-              
-              <div class="cmd-line">
-                  <span class="cmd-prompt">C:\Users\Anon></span>
-                  <span class="cmd-text">Get Developer Name</span>
-              </div>
-              <div class="cmd-line">
-                  <span class="cmd-response">Name: Paul-Dieter Brandt.</span>
-              </div>
-              <div class="cmd-line">
-                  <span class="cmd-response">Employment Condition: Student.</span>
-              </div>
-              <div class="cmd-line">
-                  <span class="cmd-prompt">C:\Users\Anon></span>
-                  <span class="cmd-text">Check Developer Status</span>
-              </div>
-              <div class="cmd-line">
-                  <span class="cmd-response">Student at Belgium Campus ITversity.</span>
-              </div>
-              <div class="cmd-line">
-                  <span class="cmd-prompt">C:\Users\Anon></span>
-                  <span class="cmd-text">Launch Portfolio</span>
-              </div>
-              
-        </div>
-    </div>
-    <div class="loader">
-      <div class="loading-text">Start Scrolling</div>
-      <span class="arrows"></span>
-      <div class="loading_1">
-          <div class="loading_1:before"></div>
-      </div>
-  </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Recent software engineering graduate with a Bachelor's degree in Computing, specializing in full-stack development. Throughout my academic journey, I've developed a strong foundation in software engineering principles and modern development practices.</p>
+                    <p>I'm particularly interested in web technologies and cloud computing, with hands-on experience in developing scalable applications using modern frameworks and tools.</p>
+                    <a href="path/to/resume.pdf" class="resume-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        Download Resume
+                    </a>
+                </div>
+                <div class="about-cards">
+                    <div class="info-card">
+                        <h3>Education</h3>
+                        <p>Bachelor's in Computing (Software Engineering)</p>
+                        <p class="subtitle">Your University Name • 2021-2025</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Current Focus</h3>
+                        <p>Full-stack Development • Cloud Computing • DevOps</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="/scritp.js"></script>
-   
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Frontend Development</h3>
+                    <ul>
+                        <li>React.js & Next.js</li>
+                        <li>JavaScript (ES6+) & TypeScript</li>
+                        <li>HTML5 & CSS3/SCSS</li>
+                        <li>Responsive Design</li>
+                        <li>State Management (Redux, Context)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Backend Development</h3>
+                    <ul>
+                        <li>Node.js & Express</li>
+                        <li>Python (Django, Flask)</li>
+                        <li>RESTful APIs</li>
+                        <li>GraphQL</li>
+                        <li>Database Design</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Technologies</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Docker & Kubernetes</li>
+                        <li>AWS & Google Cloud</li>
+                        <li>CI/CD (Jenkins, GitHub Actions)</li>
+                        <li>MongoDB & PostgreSQL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Task Management Application</h3>
+                    <p>A full-stack application built with React and Node.js that helps teams manage tasks and track productivity. Features include real-time updates, task assignment, and progress tracking.</p>
+                    <p class="tech-stack">Technologies: React, Node.js, MongoDB, Socket.io</p>
+                    <div class="project-links">
+                        <a href="https://github.com/username/project1" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Predictive Analytics Dashboard</h3>
+                    <p>A machine learning-powered dashboard that provides predictive analytics for business metrics. Built with Python and React, featuring interactive visualizations and automated reporting.</p>
+                    <p class="tech-stack">Technologies: Python, Scikit-learn, React, D3.js</p>
+                    <div class="project-links">
+                        <a href="https://github.com/username/project2" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="experience-cards">
+                <div class="experience-card">
+                    <h3>Software Development Intern</h3>
+                    <p class="company">Technology Company Name • Summer 2024</p>
+                    <ul>
+                        <li>Developed and maintained features for the company's main web application</li>
+                        <li>Collaborated with senior developers on implementing new API endpoints</li>
+                        <li>Participated in code reviews and agile development processes</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>Academic Projects Lead</h3>
+                    <p class="company">University Software Engineering Society • 2023-2024</p>
+                    <ul>
+                        <li>Led a team of 5 students in developing a campus event management system</li>
+                        <li>Implemented agile methodologies and managed project timelines</li>
+                        <li>Presented project progress to faculty and stakeholders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>I'm currently looking for new opportunities and would love to hear from you. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <div class="social-links">
+                        <a href="mailto:your.email@example.com">
+                            <i class="fas fa-envelope"></i>
+                            your.email@example.com
+                        </a>
+                        <a href="https://linkedin.com/in/username">
+                            <i class="fab fa-linkedin"></i>
+                            linkedin.com/in/username
+                        </a>
+                        <a href="https://github.com/username">
+                            <i class="fab fa-github"></i>
+                            github.com/username
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Quick Contact</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Built with ❤️ using HTML, CSS, and JavaScript</p>
+            <p>&copy; <span id="currentYear"></span> Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-
-
 </html>
