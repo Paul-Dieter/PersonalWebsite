@@ -142,7 +142,7 @@ p {
     padding: calc(var(--header-height) + 4rem) 0 4rem;
     text-align: center;
     color: #fff; /* White text for contrast */
-    background: linear-gradient(270deg, #2C3E50, #34495E, #5D6D7E, #1C2833, #3E4A59, #4B6270);
+    background: linear-gradient(270deg, #2C3E50, #3A4A59, #4A5F6B, #5D7F8C, #7A9FA6, #A6C9D7);
     background-size: 400% 400%;
     animation: sunriseSunset 20s ease-in-out infinite alternate;
 }
@@ -311,7 +311,8 @@ section {
 }
 
 .skill-card ul {
-    list-style: none;
+    list-style: disc;
+    padding-left: 1.5rem; /* Optional, adjusts the indent for the bullets */
 }
 
 .skill-card li {
