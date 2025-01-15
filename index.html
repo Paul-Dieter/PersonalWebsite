@@ -64,11 +64,14 @@
                     </a>
                 </div>
                 <div class="about-cards">
-                    <div class="info-card">
-                        <h3>Education</h3>
-                        <p>Bachelor's in Computing</p>
-                        <p class="subtitle">Belgium Campus ITversity • 2023-2026</p>
-                    </div>
+                  <div class="info-card">
+                    <h3>Education</h3>
+                    <p >Bachelor's in Computing</p>
+                    <p class="subtitle">Belgium Campus ITversity • 2023-2026</p>
+                    <p id="edu-heading">High School Diploma</p>
+                    <p class="subtitle">Hoërskool Overkruin, South Africa • 2019</p>
+                </div>
+                
                     <div class="info-card">
                         <h3>Current Focus</h3>
                         <p>Full-stack Development • Cloud Computing • DevOps</p>
@@ -335,13 +338,13 @@ document.addEventListener('DOMContentLoaded', function() {
   var setVanta = () => {
     if (window.VANTA) {
       window.VANTA.CLOUDS({
-        el: ".hero",  // Target the correct element
+        el: ".hero", // Target the correct element
         mouseControls: true,
   touchControls: true,
   gyroControls: false,
   minHeight: 200.00,
   minWidth: 200.00,
-  skyColor: 0x408080,
+  skyColor: 0x87CEEB,
   speed: 0.7      // Speed of the effect (0 is static)
       });
     }
