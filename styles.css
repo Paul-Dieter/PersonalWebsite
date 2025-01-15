@@ -1,13 +1,13 @@
 /* Base Styles */
 :root {
-    --primary-color: #007f8f;
+    --primary-color: #1167fb;
     --primary-dark: #003f77; 
     --text-dark: #2c3e50;
     --text-light: #595959;
-    --bg-light: #ecf0f1; 
-    --white: #ffffff;
+    --bg-light: #51767d22; 
+    --white: #ffffffe9;
     --max-width: 1200px;
-    --header-height: 70px;
+    --header-height: 50px;
     --overlay-color: rgba(0, 0, 0, 0.5); /* Dark overlay for the mobile menu */
 }
 
@@ -23,12 +23,14 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.5;
     color: var(--text-dark);
+    overflow-x: hidden;
 }
 
 .container {
@@ -145,23 +147,13 @@ p {
 .hero {
     padding: calc(var(--header-height) + 4rem) 0 4rem;
     text-align: center;
-    color: #fff; /* White text for contrast */
-    background: linear-gradient(270deg, #4a5aec, #84d4e4, #64d3ff);
-    background-size: 400% 400%;
-    animation: sunriseSunset 5s ease-in-out infinite alternate;
+    height: 500px;
+
 }
+
 
 .hero p {
-    color: #fff;
-}
-
-@keyframes sunriseSunset {
-    0% {
-        background-position: 0% 50%;  /* Sunrise */
-    }
-    100% {
-        background-position: 100% 50%; /* Sunset */
-    }
+    color: #000000;
 }
 
 
@@ -221,7 +213,7 @@ section {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--primary-color); /* Customize heading color */
+    color: black; /* Customize heading color */
 }
 
 .about-grid {
@@ -258,7 +250,7 @@ section {
 
 .info-card h3 {
     font-size: 1.2rem;
-    color: var(--primary-color);
+    color: black;
     margin-bottom: 1rem;
 }
 
@@ -292,35 +284,134 @@ section {
 }
 
 /* Skills Section */
-.skills{
+.skills {
     background-color: var(--bg-light);
+    padding: 2rem 1rem;
+}
+
+.skills h2 {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-   
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .skill-card {
     background: var(--white);
     padding: 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.196);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect for the entire card */
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color, #333);
+}
+
+/* Adding a subtle background animation on hover */
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.skill-card:hover::before {
+    transform: translateX(100%);
 }
 
 .skill-card h3 {
     margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Underline animation for headings */
+.skill-card h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color, #333);
+    transition: width 0.3s ease;
+}
+
+.skill-card:hover h3::after {
+    width: 100%;
 }
 
 .skill-card ul {
-    list-style: disc;
-    padding-left: 1.5rem; /* Optional, adjusts the indent for the bullets */
+    list-style: none;
+    padding-left: 0;
 }
 
 .skill-card li {
     margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Custom bullet points with hover effect */
+.skill-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color, #333);
+    transition: transform 0.2s ease;
+}
+
+/* Individual list item hover effect */
+.skill-card li:hover {
+    transform: translateX(5px);
+    color: var(--accent-color, #333);
+}
+
+.skill-card li:hover::before {
+    transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .skill-card {
+        padding: 1.25rem;
+    }
+}
+
+/* Handle very small screens */
+@media (max-width: 350px) {
+    .skill-card {
+        padding: 1rem;
+    }
 }
 
 /* Projects Section */
@@ -328,8 +419,16 @@ section {
 .carousel-container {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to allow content to show fully */
     padding: 0 40px;
+}
+
+.draggable-info {
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 .carousel-track {
@@ -344,40 +443,56 @@ section {
     transition: none;
 }
 
+.projects h2 {
+    text-align: center;
+}
+
 .project-card {
     flex: 0 0 100%;
     max-width: 900px;
     scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px; /* Changed from fixed height to min-height */
+    margin-bottom: 2rem; /* Added margin to prevent content overlap */
 }
 
 .project-content {
     margin: 1.65rem;
     display: flex;
     gap: 2rem;
-    background: whitesmoke; /* Soft gradient for depth */
-    padding: 2rem;  /* Increased padding for more spacing */
-    border-radius: 1rem;  /* Rounded corners for a smooth effect */
-    box-shadow:  10px 10px var(--primary-color); /* Larger, more pronounced shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
-    outline: 1.5px solid black; /* Black outline when hovered */
+    background: rgba(116, 116, 116, 0.061);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 10px 10px var(--text-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: 1.5px solid black;
+    height: auto; /* Changed from 100% to auto */
+    min-height: 100%; /* Added min-height to maintain consistent sizing */
 }
 
 .project-content:hover {
-    transform: translateY(-10px) scale(1.05); /* Comes forward and slightly enlarges on hover */
-    box-shadow: 0 15px 30px rgba(130, 130, 130, 0.2); /* Stronger shadow on hover */
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(130, 130, 130, 0.2);
 }
 
 .project-text {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: visible; /* Added to ensure text doesn't get cut off */
 }
 
 .project-image {
     flex: 0 0 200px;
-    height: 150px;
+    margin-top: 2rem;
+    height: 250px;
     overflow: hidden;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for image */
-    transition: transform 0.3s ease; /* Smooth transform on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .project-image img {
@@ -387,14 +502,14 @@ section {
 }
 
 .project-image:hover {
-    transform: scale(1.05); /* Zoom effect on hover */
+    transform: scale(1.05);
 }
 
 .carousel-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.357); /* Slight transparency for buttons */
+    background: rgba(255, 255, 255, 0.357);
     border: none;
     width: 40px;
     height: 40px;
@@ -406,7 +521,7 @@ section {
 }
 
 .carousel-button:hover {
-    background: rgba(255, 255, 255, 1); /* Solid white on hover */
+    background: rgba(255, 255, 255, 1);
 }
 
 .carousel-button.prev {
@@ -420,41 +535,140 @@ section {
 @media (max-width: 768px) {
     .project-content {
         flex-direction: column;
+        margin: 1rem; /* Reduced margin for mobile */
+        padding: 1.5rem; /* Reduced padding for mobile */
     }
 
     .project-image {
         flex: 0 0 120px;
     }
+    
+    .project-card {
+        margin-bottom: 1.5rem; /* Adjusted margin for mobile */
+    }
 }
 
 
-
-
 /* Experience Section */
-.experience{
-     background-color: var(--bg-light);
+.experience {
+    background-color: var(--bg-light);
+    padding: 2rem 1rem; /* Add consistent padding */
 }
 
 .experience-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr; /* Mobile-first: single column by default */
+    gap: 1.5rem; /* Slightly reduced gap for mobile */
+    max-width: 1200px; /* Prevent cards from getting too wide */
+    margin: 0 auto; /* Center the grid */
 }
 
 .experience-card {
     background: var(--white);
-    padding: 1.5rem;
+    padding: 1.25rem; /* Slightly reduced padding for mobile */
     border-radius: 0.5rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.experience-card h3 {
+    font-size: 1.25rem; /* Appropriate size for mobile */
+    margin-bottom: 0.75rem;
+}
+
+.experience-card h4 {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
 }
 
 .experience-card ul {
     list-style: none;
     margin-top: 1rem;
+    padding-left: 0; /* Remove default padding */
 }
 
 .experience-card li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.5; /* Improve readability */
+    font-size: 0.9375rem; /* Slightly smaller font for mobile */
+    position: relative;
+    padding-left: 1.25rem; /* Space for bullet point */
+}
+
+.experience-card li::before {
+    content: "•"; /* Custom bullet point */
+    position: absolute;
+    left: 0;
+    color: var(--accent-color, #333); /* Use accent color or fallback */
+}
+
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
+    .experience {
+        padding: 3rem 2rem;
+    }
+
+    .experience-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .experience-card {
+        padding: 1.5rem;
+    }
+
+    .experience-card h3 {
+        font-size: 1.375rem;
+    }
+
+    .experience-card h4 {
+        font-size: 1.125rem;
+    }
+
+    .experience-card li {
+        font-size: 1rem;
+    }
+}
+
+/* Large Desktop Breakpoint */
+@media (min-width: 1200px) {
+    .experience {
+        padding: 4rem 2rem;
+    }
+
+    .experience-cards {
+        gap: 2.5rem;
+    }
+
+    .experience-card {
+        padding: 2rem;
+    }
+}
+
+/* Handle very small screens */
+@media (max-width: 350px) {
+    .experience-card {
+        padding: 1rem;
+    }
+
+    .experience-card h3 {
+        font-size: 1.125rem;
+    }
+
+    .experience-card h4 {
+        font-size: 0.9375rem;
+    }
+
+    .experience-card li {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
 }
 
 

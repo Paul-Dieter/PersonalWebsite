@@ -141,18 +141,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     },
 
-    // Set slide position
-    setSlidePosition() {
-      const maxTranslate = 0;
-      const minTranslate = -(this.cards[0].offsetWidth + 32) * (this.cards.length - 1);
-      
-      this.currentTranslate = Math.max(
-        Math.min(this.currentTranslate, maxTranslate),
-        minTranslate
-      );
-      
-      this.track.style.transform = `translateX(${this.currentTranslate}px)`;
-    },
+
+// Set slide position
+setSlidePosition() {
+    const containerWidth = this.track.offsetWidth; // Get the container width
+    const cardWidth = this.cards[0].offsetWidth + 32; // Including gap
+    const totalWidth = cardWidth * this.cards.length; // Total width of all the cards
+    const maxTranslate = 0;
+    const minTranslate = -(totalWidth - containerWidth);
+  
+    this.currentTranslate = Math.max(
+      Math.min(this.currentTranslate, maxTranslate),
+      minTranslate
+    );
+  
+    this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+  },
+  
+  
 
     // Handle sliding
     slide(direction) {
