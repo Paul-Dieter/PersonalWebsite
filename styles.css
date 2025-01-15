@@ -465,7 +465,7 @@ section {
     background: rgba(116, 116, 116, 0.061);
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 10px 10px var(--text-light);
+    box-shadow: 2px 5px var(--text-light);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     outline: 1.5px solid black;
     height: auto; /* Changed from 100% to auto */
