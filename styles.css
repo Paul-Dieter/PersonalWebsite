@@ -76,7 +76,13 @@ p {
     right: 0;
     background: var(--white);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
     z-index: 1000;
+}
+
+.header.scrolled {
+    background: var(--white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -148,13 +154,18 @@ p {
 
 /* Hero Section */
 .hero {
-
+    min-height: 100vh; /* Makes it full screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-size: cover;
-    padding: calc(var(--header-height) + 4rem) 0 4rem;
+    padding: 0; /* Remove default padding */
     text-align: center;
-    height: 500px;
-
+    position: relative;
+    overflow: hidden;
 }
+
+
 
 .hero h2 {
     margin-top: 3rem;
@@ -170,9 +181,21 @@ p {
 
 
 .hero-content {
-   
     max-width: 800px;
     margin: 0 auto;
+    /* Add a subtle animation when the page loads */
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    background: linear-gradient(to bottom, transparent, var(--white));
+    pointer-events: none;
 }
 
 .hero-buttons {
@@ -219,7 +242,7 @@ section {
 
 /* About Section */
 .about {
-    padding: 6rem 3rem;
+    padding: 20rem 3rem;
     position: relative;
     overflow: hidden;
 }
@@ -469,9 +492,11 @@ section {
         display: none;
     }
 }
+
+
 /* Skills Section */
 .skills {
-    padding: 2rem 1rem;
+    padding: 2rem 3rem;
     position: relative;
     overflow: hidden;
 
@@ -605,6 +630,10 @@ section {
 
 /* Projects Section */
 
+.projects{
+    padding: 20rem 0rem;
+}
+
 .carousel-container {
     
     position: relative;
@@ -614,6 +643,7 @@ section {
 }
 
 .draggable-info {
+    
     text-align: center;
     font-size: 1rem;
     color: #666;
@@ -638,6 +668,7 @@ section {
 }
 
 .project-card {
+    
     flex: 0 0 100%;
     max-width: 900px;
     scroll-snap-align: start;

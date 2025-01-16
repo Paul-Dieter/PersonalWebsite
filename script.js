@@ -210,6 +210,25 @@ window.addEventListener('scroll', function () {
 
 /* About section transition */
 
+    // Handle header background on scroll
+    const header = document.querySelector('.header');
+    const hero = document.querySelector('.hero');
+    
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const heroHeight = hero.offsetHeight;
+        
+        // Add/remove scrolled class based on scroll position
+        if (scrollPosition > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Add parallax effect to hero
+        hero.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+        hero.style.opacity = 1 - (scrollPosition / heroHeight);
+    });
 
 
 
