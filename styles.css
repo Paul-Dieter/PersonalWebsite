@@ -565,21 +565,21 @@ section {
         ),
         linear-gradient(120deg, 
             rgba(255, 255, 255, 0.385) 0%,
-            rgba(2, 128, 159, 0.209) 45%,
-            rgba(0, 191, 255, 0.226) 55%,
+            rgba(2, 128, 159, 0.144) 45%,
+            rgba(0, 191, 255, 0.111) 55%,
             rgba(255, 255, 255, 0.571) 100%
         ),
         repeating-linear-gradient(
             45deg,
             rgba(0, 0, 0, 0) 0px,
             rgba(0, 0, 0, 0) 1px,
-            transparent 1px,
-            transparent 25px
+            transparent 0px,
+            transparent 0px
         ),
         repeating-linear-gradient(
             -45deg,
             rgba(0, 0, 0, 0) 0px,
-            rgba(0, 0, 0, 0.02) 1px,
+            rgba(0, 0, 0, 0.02) 0px,
             transparent 1px,
             transparent 25px
         );

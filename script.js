@@ -261,7 +261,7 @@ const observer = new IntersectionObserver((entries) => {
       }
   });
 }, {
-  threshold: 0.9,
+  threshold: 0.5,
   rootMargin: '50px'
 });
 
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
       },
       {
-          threshold: 0.1,
+          threshold: 0.5,
           rootMargin: '50px'
       }
   );
@@ -359,8 +359,8 @@ const contactobserver = new IntersectionObserver((entries) => {
       }
   });
 }, {
-  threshold: 0.9,
-  rootMargin: '200px'
+  threshold: 0.5,
+  rootMargin: '10px'
 });
 
 const contactSection = document.querySelector('.contact');
