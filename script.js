@@ -230,5 +230,140 @@ window.addEventListener('scroll', function () {
         hero.style.opacity = 1 - (scrollPosition / heroHeight);
     });
 
+//about background fade
 
+const aboutobserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+      } else {
+          entry.target.classList.remove('visible');
+      }
+  });
+}, {
+  threshold: 0.9,
+  rootMargin: '50px'
+});
 
+const aboutSection = document.querySelector('.about');
+if (aboutSection) {
+  aboutobserver.observe(aboutSection);
+}
+
+//skills background fade
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+      } else {
+          entry.target.classList.remove('visible');
+      }
+  });
+}, {
+  threshold: 0.9,
+  rootMargin: '50px'
+});
+
+const skillsSection = document.querySelector('.skills');
+if (skillsSection) {
+  observer.observe(skillsSection);
+}
+
+//experience background fade
+
+document.addEventListener('DOMContentLoaded', () => {
+  const experienceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.5,
+    rootMargin: '50px'
+  });
+
+  const experienceSection = document.querySelector('.experience');
+  if (experienceSection) {
+    experienceObserver.observe(experienceSection);
+  }
+});
+
+//Project background
+
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(
+      (entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+              } else {
+                  entry.target.classList.remove('visible');
+              }
+          });
+      },
+      {
+          threshold: 0.1,
+          rootMargin: '50px'
+      }
+  );
+
+  // Observe both experience and projects sections
+  const sections = document.querySelectorAll('.experience, .projects');
+  sections.forEach(section => {
+      if (section) {
+          observer.observe(section);
+      }
+  });
+});
+
+//contact  backgroud : 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(
+      (entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+              } else {
+                  entry.target.classList.remove('visible');
+              }
+          });
+      },
+      {
+          threshold: 0.1,
+          rootMargin: '50px'
+      }
+  );
+
+  // Observe both experience and projects sections
+  const sections = document.querySelectorAll('.contact');
+  sections.forEach(section => {
+      if (section) {
+          observer.observe(section);
+      }
+  });
+});
+
+//contact background fade
+
+const contactobserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+      } else {
+          entry.target.classList.remove('visible');
+      }
+  });
+}, {
+  threshold: 0.9,
+  rootMargin: '200px'
+});
+
+const contactSection = document.querySelector('.contact');
+if (contactSection) {
+  contactobserver.observe(contactSection);
+}

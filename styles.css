@@ -167,6 +167,8 @@ p {
 
 
 
+
+
 .hero h2 {
     margin-top: 3rem;
 
@@ -242,23 +244,64 @@ section {
 
 /* About Section */
 .about {
-    padding: 20rem 3rem;
     position: relative;
     overflow: hidden;
 }
 
-/* Subtle background pattern */
 .about::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
+    width: 100%;
     height: 100%;
-    background-size: 20px 20px;
-    opacity: 0.5;
-    pointer-events: none;
+    opacity: 0;
+    transition: opacity 3s ease-out;
+    z-index: -1;
+    background: 
+        /* Top and bottom fades to white */
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            transparent 15%,
+            transparent 85%,
+            #ffffff 100%
+        ),
+        /* Four corner radial gradients for each box */
+        radial-gradient(
+            circle at 25% 25%,
+            rgba(0, 102, 255, 0.087) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(0, 162, 255, 0.17) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 25% 75%,
+            rgba(0, 85, 212, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 75%,
+            rgba(0, 153, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        /* Center glow */
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 166, 255, 0.129) 0%,
+            transparent 60%
+        );
+    backdrop-filter: blur(10px);
 }
+
+.about.visible::before {
+    opacity: 1;
+}
+
+
 
 .about h2 {
     font-size: 2.5rem;
@@ -496,12 +539,55 @@ section {
 
 /* Skills Section */
 .skills {
-    padding: 2rem 3rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
     position: relative;
     overflow: hidden;
-
 }
 
+.skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    z-index: -1;
+    background: 
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            transparent 10%,
+            transparent 90%,
+            #ffffff 100%
+        ),
+        linear-gradient(120deg, 
+            rgba(255, 255, 255, 0.385) 0%,
+            rgba(2, 128, 159, 0.209) 45%,
+            rgba(0, 191, 255, 0.226) 55%,
+            rgba(255, 255, 255, 0.571) 100%
+        ),
+        repeating-linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0) 1px,
+            transparent 1px,
+            transparent 25px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0.02) 1px,
+            transparent 1px,
+            transparent 25px
+        );
+}
+
+.skills.visible::before {
+    opacity: 1;
+}
 
 .skills h2 {
     text-align: center;
@@ -629,10 +715,66 @@ section {
 }
 
 /* Projects Section */
-
-.projects{
-    padding: 20rem 0rem;
+.projects {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Set the section height to fill the screen */
+    overflow: hidden;
 }
+
+.projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 3s ease-out;
+    z-index: -1;
+    background: 
+        /* Top and bottom fades to white */
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            transparent 15%,
+            transparent 85%,
+            #ffffff 100%
+        ),
+        /* Four corner radial gradients for each box */
+        radial-gradient(
+            circle at 25% 25%,
+            rgba(0, 102, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(0, 162, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 25% 75%,
+            rgba(0, 85, 212, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 75%,
+            rgba(0, 153, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        /* Center glow */
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 60%
+        );
+    backdrop-filter: blur(10px);
+ }
+ 
+ /* Add this class to make the background visible when scrolled into view */
+ .projects.visible::before {
+    opacity: 1;
+ }
 
 .carousel-container {
     
@@ -652,6 +794,7 @@ section {
 }
 
 .carousel-track {
+    
     display: flex;
     gap: 2rem;
     transition: transform 0.3s ease-out;
@@ -659,6 +802,7 @@ section {
 }
 
 .carousel-track.dragging {
+    
     cursor: grabbing;
     transition: none;
 }
@@ -680,10 +824,10 @@ section {
 }
 
 .project-content {
+    background: white;
     margin: 1.65rem;
     display: flex;
     gap: 2rem;
-    background: rgba(95, 109, 110, 0.061);
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 1px 1px var(--text-light);
@@ -699,6 +843,7 @@ section {
 }
 
 .project-text {
+    
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -772,25 +917,67 @@ section {
 
 /* Experience Section */
 .experience {
-    padding: 6rem 2rem;
     position: relative;
-    overflow: hidden;
+    min-height: 100vh; /* or whatever size you need */
+    width: 100%;
+ 
 }
 
 
-/* Decorative background elements */
 .experience::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
+    width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0);
-    background-size: 20px 20px;
-    opacity: 0.5;
-    pointer-events: none;
+    opacity: 0;
+    transition: opacity 3s ease-out;
+    z-index: -1;
+    background: 
+        /* Top and bottom fades to white */
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            transparent 15%,
+            transparent 85%,
+            #ffffff 100%
+        ),
+        /* Four corner radial gradients for each box */
+        radial-gradient(
+            circle at 25% 25%,
+            rgba(0, 102, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(0, 162, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 25% 75%,
+            rgba(0, 85, 212, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 75%,
+            rgba(0, 153, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        /* Center glow */
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 217, 255, 0.3) 0%,
+            transparent 60%
+        );
+    backdrop-filter: blur(10px);
 }
+
+
+
+.experience.visible::before {
+    opacity: 1;
+  }
 
 .experience h2 {
     text-align: center;
@@ -1065,11 +1252,72 @@ section {
 .contact {
     padding: 6rem 0;
     position: relative;
-    background: linear-gradient(to bottom, var(--bg-white), #f8fafc);
-    box-shadow: inset 0 4px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 4px 30px rgba(255, 255, 255, 0.05);
+    
 }
 
+.contact .container .contact-grid {
+    background: white;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 3s ease-out;
+    z-index: -1;
+    background: 
+        /* Top and bottom fades to white */
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            transparent 15%,
+            transparent 85%,
+            #ffffff 100%
+        ),
+        /* Four corner radial gradients for each box */
+        radial-gradient(
+            circle at 25% 25%,
+            rgba(0, 102, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(0, 162, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 25% 75%,
+            rgba(0, 85, 212, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 75%,
+            rgba(0, 153, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        /* Center glow */
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 217, 255, 0.3) 0%,
+            transparent 60%
+        );
+    backdrop-filter: blur(10px);
+}
+
+
+
+.contact.visible::before {
+    opacity: 1;
+  }
+
+
 .contact .container {
+    
     max-width: var(--max-width);
     margin: 0 auto;
     opacity: 0;
@@ -1082,7 +1330,7 @@ section {
     margin-bottom: 3.5rem;
     font-size: 2.75rem;
     font-weight: 700;
-    background: linear-gradient(120deg, var(--primary-color), var(--primary-dark));
+    background: black;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
@@ -1101,6 +1349,7 @@ section {
 }
 
 .contact-grid {
+    
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
@@ -1123,7 +1372,9 @@ section {
     max-width: 100%;
     padding-right: 3rem;
     border-right: 1px solid rgba(0, 0, 0, 0.08);
+    
 }
+
 
 .contact-info p {
     font-size: 1.15rem;
@@ -1182,6 +1433,7 @@ section {
 
 /* Contact Right Form Side */
 .contact-form {
+    
     padding-left: 2rem;
     opacity: 0;
     animation: fadeIn 0.8s ease forwards 0.6s;
@@ -1195,6 +1447,7 @@ section {
 }
 
 .form-group {
+    
     margin-bottom: 2rem;
     position: relative;
 }
@@ -1243,7 +1496,6 @@ section {
     justify-content: center;
     gap: 0.75rem;
     padding: 1.125rem 2.75rem;
-    background: var(red );
     color: var(--bg-white);
     border-radius: 0.75rem;
     border: 2px solid var(--primary-color);
@@ -1261,7 +1513,7 @@ section {
 
 
 .contact-form button:hover {
-    background: var(--primary-dark);
+    background: rgb(0, 166, 255);
     border-color: var(--primary-dark);
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow */
@@ -1342,7 +1594,7 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--bg-footer);
+
     padding: 2rem 0;
     text-align: center;
 }
@@ -1355,6 +1607,13 @@ section {
 #currentYear {
     font-weight: 600;
 }
+
+/*My section Divider*/
+
+.divider {
+    margin: 5rem 0; /* Adjust this value to control space between sections */
+    height: 1px; /* Optional, if you want a thin line */
+  }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
