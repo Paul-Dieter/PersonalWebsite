@@ -191,10 +191,8 @@
 }
 
 .contact-form button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
+    display: block; /* Changed from inline-flex to block */
+    margin: clamp(1rem, 2vw, 1.5rem) auto 0; /* Center the button with auto horizontal margins */
     padding: clamp(0.875rem, 1.5vw, 1.125rem) clamp(2rem, 3vw, 2.75rem);
     color: white;
     background: var(--primary-color);
@@ -204,9 +202,11 @@
     font-size: clamp(1rem, 1.2vw, 1.1rem);
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: clamp(1rem, 2vw, 1.5rem);
     position: relative;
     overflow: hidden;
+    width: fit-content; /* Allow button to size to content */
+    min-width: 200px; /* Minimum width for the button */
+    text-align: center; /* Center the text inside the button */
 }
 
 /* Notification Fix */
@@ -268,7 +268,11 @@
     .notification.show {
         transform: translate(-50%, 20px);
     }
-}
+
+    .contact-form button {
+        width: 100%; /* Full width on mobile */
+        min-width: unset; /* Remove minimum width on mobile */
+}}
 
 @media (hover: hover) {
     .social-links a:hover {
