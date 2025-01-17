@@ -179,3 +179,30 @@ form.addEventListener('submit', function(e) {
         notification.classList.remove('show');
     }, 2000);
 });
+
+//Prevent verticle and horizontal drag at same time
+
+const carousel = document.querySelector('.carousel-track');
+let isDragging = false, startX, scrollLeft;
+
+carousel.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+});
+
+carousel.addEventListener('mouseleave', () => {
+    isDragging = false;
+});
+
+carousel.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+carousel.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault(); // Prevent vertical scroll
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2; // Adjust scroll speed
+    carousel.scrollLeft = scrollLeft - walk;
+});
