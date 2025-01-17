@@ -61,6 +61,7 @@
     width: 100%;
     overflow: visible;
     padding: 0 20px;
+    overflow-y: hidden;
 }
 
 .draggable-info {

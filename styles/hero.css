@@ -10,23 +10,14 @@
     position: relative;
     overflow: hidden;
 }
-
-
-
-
-
 .hero h2 {
     margin-top: 3rem;
 
 }
 
-
-
-
 .hero p {
     color: #000000;
 }
-
 
 .hero-content {
     max-width: 800px;
