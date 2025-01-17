@@ -13,7 +13,7 @@
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease forwards;
     padding: 0 clamp(1rem, 3vw, 2rem);
-    z-index: 2; /* Ensure content stays above background effects */
+    z-index: 2; 
 }
 
 /* Background effect adjustment */
@@ -71,7 +71,7 @@
     margin-bottom: clamp(2rem, 5vw, 3.5rem);
     font-size: clamp(2rem, 4vw, 2.75rem);
     font-weight: 700;
-    color: black; /* Changed from background-clip text */
+    color: black; 
     position: relative;
 }
 
@@ -191,8 +191,8 @@
 }
 
 .contact-form button {
-    display: block; /* Changed from inline-flex to block */
-    margin: clamp(1rem, 2vw, 1.5rem) auto 0; /* Center the button with auto horizontal margins */
+    display: block; 
+    margin: clamp(1rem, 2vw, 1.5rem) auto 0; 
     padding: clamp(0.875rem, 1.5vw, 1.125rem) clamp(2rem, 3vw, 2.75rem);
     color: white;
     background: var(--primary-color);
@@ -204,9 +204,9 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    width: fit-content; /* Allow button to size to content */
-    min-width: 200px; /* Minimum width for the button */
-    text-align: center; /* Center the text inside the button */
+    width: fit-content; 
+    min-width: 200px; 
+    text-align: center; 
 }
 
 /* Notification Fix */
@@ -270,8 +270,8 @@
     }
 
     .contact-form button {
-        width: 100%; /* Full width on mobile */
-        min-width: unset; /* Remove minimum width on mobile */
+        width: 100%; 
+        min-width: unset; 
 }}
 
 @media (hover: hover) {
