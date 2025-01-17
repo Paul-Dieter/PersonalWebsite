@@ -1,28 +1,31 @@
 const form = document.getElementById('contactForm');
-  const notification = document.getElementById('notification');
+const notification = document.getElementById('notification');
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent the form from redirecting
+form.addEventListener('submit', function (e) {
+  e.preventDefault(); // Prevent the form from redirecting
 
-    const formData = new FormData(form);
+  // Optional: Prevent page scroll by staying at the current position
+  window.scrollTo(0, window.scrollY);
 
-    fetch('https://formsubmit.co/pauldieter.brandt@yahoo.com', {
-      method: 'POST',
-      body: formData,
+  const formData = new FormData(form);
+
+  fetch('https://formsubmit.co/pauldieter.brandt@yahoo.com', {
+    method: 'POST',
+    body: formData,
+  })
+    .then(response => {
+      if (response.ok) {
+        // Show notification
+        notification.classList.add('show');
+        setTimeout(() => {
+          notification.classList.remove('show');
+        }, 2000);
+
+        // Reset the form
+        form.reset();
+      } else {
+        console.error('Form submission failed');
+      }
     })
-      .then(response => {
-        if (response.ok) {
-          // Show notification
-          notification.classList.add('show');
-          setTimeout(() => {
-            notification.classList.remove('show');
-          }, 2000);
-
-          // Reset the form
-          form.reset();
-        } else {
-          console.error('Form submission failed');
-        }
-      })
-      .catch(error => console.error('Error:', error));
-  });
+    .catch(error => console.error('Error:', error));
+});
