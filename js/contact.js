@@ -1,31 +1,18 @@
-const form = document.getElementById('contactForm');
+const form = document.querySelector('.contact-form'); // Add this class to your form if not already present
 const notification = document.getElementById('notification');
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault(); // Prevent the form from redirecting
-
-  // Optional: Prevent page scroll by staying at the current position
-  window.scrollTo(0, window.scrollY);
-
-  const formData = new FormData(form);
-
-  fetch('https://formsubmit.co/pauldieter.brandt@yahoo.com', {
-    method: 'POST',
-    body: formData,
-  })
-    .then(response => {
-      if (response.ok) {
-        // Show notification
-        notification.classList.add('show');
-        setTimeout(() => {
-          notification.classList.remove('show');
-        }, 2000);
-
-        // Reset the form
-        form.reset();
-      } else {
-        console.error('Form submission failed');
-      }
-    })
-    .catch(error => console.error('Error:', error));
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Show notification
+  notification.classList.add('show');
+  
+  // Hide notification after 2 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
+  }, 2000);
+  
+  // Optional: Reset form
+  form.reset();
 });
+
