@@ -1,0 +1,198 @@
+/* Projects Section */
+.projects {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+.projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 3s ease-out;
+    z-index: -1;
+    background: 
+        /* Top and bottom fades to white */
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            transparent 15%,
+            transparent 85%,
+            #ffffff 100%
+        ),
+        /* Four corner radial gradients for each box */
+        radial-gradient(
+            circle at 25% 25%,
+            rgba(0, 102, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(0, 162, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 25% 75%,
+            rgba(0, 85, 212, 0.2) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 75%,
+            rgba(0, 153, 255, 0.2) 0%,
+            transparent 35%
+        ),
+        /* Center glow */
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 60%
+        );
+    backdrop-filter: blur(10px);
+ }
+ 
+ /* Add this class to make the background visible when scrolled into view */
+ .projects.visible::before {
+    opacity: 1;
+ }
+
+.carousel-container {
+    
+    position: relative;
+    width: 100%;
+    overflow: visible; 
+    padding: 0 40px;
+}
+
+.draggable-info {
+    
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.carousel-track {
+    
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.3s ease-out;
+    cursor: grab;
+}
+
+.carousel-track.dragging {
+    
+    cursor: grabbing;
+    transition: none;
+}
+
+.projects h2 {
+    text-align: center;
+}
+
+.project-card {
+    
+    flex: 0 0 100%;
+    max-width: 900px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px; 
+    margin-bottom: 2rem; 
+}
+
+.project-content {
+    background: white;
+    margin: 1.65rem;
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 1px 1px var(--text-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: 0.1px solid rgba(0, 0, 0, 0.094);
+    height: auto; 
+    min-height: 100%; 
+}
+
+.project-content:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(130, 130, 130, 0.2);
+}
+
+.project-text {
+    
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: visible; 
+}
+
+.project-image {
+    flex: 0 0 200px;
+    margin-top: 2rem;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-image:hover {
+    transform: scale(1.05);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.357);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 10px 40px 80px rgb(0, 0, 0);
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+.carousel-button:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.carousel-button.prev {
+    left: 0;
+}
+
+.carousel-button.next {
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    .project-content {
+        flex-direction: column;
+        margin: 1rem;
+        padding: 1.5rem; 
+    }
+
+    .project-image {
+        flex: 0 0 120px;
+    }
+    
+    .project-card {
+        margin-bottom: 1.5rem;}
+}

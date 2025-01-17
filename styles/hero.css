@@ -1,0 +1,88 @@
+/* Hero Section */
+.hero {
+    min-height: 100vh; /* Makes it full screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    padding: 0; /* Remove default padding */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+
+.hero h2 {
+    margin-top: 3rem;
+
+}
+
+
+
+
+.hero p {
+    color: #000000;
+}
+
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    /* Add a subtle animation when the page loads */
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    background: linear-gradient(to bottom, transparent, var(--white));
+    pointer-events: none;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-light);
+}
+
+/* Sections */
+section {
+    padding: 4rem 0;
+}
