@@ -70,3 +70,25 @@ p {
     margin: 5rem 0; 
     height: 1px; 
   }
+
+  /* Media Queries */
+@media (max-width: 768px) {
+    .divider {
+        margin: 0rem 0; 
+        height: 0px; 
+      }
+}
+
+@media (max-width: 480px) {
+    .divider {
+        margin: 0rem 0; 
+        height: 0px; 
+      }
+}
+
+@media (hover: hover) {
+    .divider {
+        margin: 0rem 0; 
+        height: 0px; 
+      }
+}

@@ -2,6 +2,7 @@
 .about {
     position: relative;
     overflow: hidden;
+    padding: clamp(3rem, 5vw, 5rem);
 }
 
 .about::before {
@@ -15,7 +16,6 @@
     transition: opacity 3s ease-out;
     z-index: -1;
     background: 
-        /* Top and bottom fades to white */
         linear-gradient(
             180deg,
             #ffffff 0%,
@@ -23,7 +23,6 @@
             transparent 85%,
             #ffffff 100%
         ),
-        /* Four corner radial gradients for each box */
         radial-gradient(
             circle at 25% 25%,
             rgba(0, 102, 255, 0.087) 0%,
@@ -44,7 +43,6 @@
             rgba(0, 153, 255, 0.2) 0%,
             transparent 35%
         ),
-        /* Center glow */
         radial-gradient(
             circle at 50% 50%,
             rgba(0, 166, 255, 0.129) 0%,
@@ -57,12 +55,10 @@
     opacity: 1;
 }
 
-
-
 .about h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
     color: #2d3436;
     font-weight: 700;
     position: relative;
@@ -77,7 +73,7 @@
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: clamp(40px, 8vw, 60px);
     height: 3px;
     background: var(--primary-color);
     border-radius: 2px;
@@ -85,8 +81,8 @@
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 600px), 1fr));
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: start;
     max-width: 1400px;
     margin: 0 auto;
@@ -95,8 +91,8 @@
 }
 
 .about-text {
-    margin-top: 2rem;
-    font-size: 1.1rem;
+    margin-top: clamp(1rem, 2vw, 2rem);
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
     line-height: 1.8;
     color: #4a4a4a;
     opacity: 0;
@@ -106,15 +102,14 @@
 
 .about-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: clamp(1rem, 2vw, 2rem);
 }
 
 .info-card {
     background: #ffffff;
-    padding: 2rem;
-    border-radius: 1rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-radius: clamp(0.5rem, 1vw, 1rem);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     opacity: 0;
@@ -124,42 +119,38 @@
     border: 1px solid #0000004d;
 }
 
-.info-card p{
+.info-card p {
     text-decoration: underline;
-    margin: 0px;  
+    margin: 0;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 .info-card .subtitle {
     color: var(--primary-color);
     text-decoration: none;
     position: relative;
-    padding-left: 1.2em; /* Space for the dot */
+    padding-left: 1.2em;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 .info-card .subtitle::before {
-    content: '•'; /* Dot */
+    content: '•';
     position: absolute;
     left: 0;
     top: 0;
-    color: var(--primary-color); /* Matches subtitle color */
+    color: var(--primary-color);
     font-size: 1.2em;
     line-height: 1;
 }
 
-
-.info-card #edu-heading{
-    margin-top: 2rem;
-}
-
-.info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+.info-card #edu-heading {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
 }
 
 .info-card h3 {
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
     color: #2d3436;
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
     position: relative;
     padding-bottom: 0.5rem;
 }
@@ -169,14 +160,10 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 40px;
+    width: clamp(30px, 5vw, 40px);
     height: 2px;
     background: var(--primary-color);
     transition: width 0.3s ease;
-}
-
-.info-card:hover h3::after {
-    width: 60px;
 }
 
 .resume-link {
@@ -186,29 +173,15 @@
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
-    margin-top: 2.5rem;
-    padding: 0.75rem 1.5rem;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
     border-radius: 2rem;
     background: rgba(var(--primary-color-rgb), 0.1);
     transition: all 0.3s ease;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
-.resume-link:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateX(5px);
-}
-
-.resume-link i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-}
-
-.resume-link:hover i {
-    transform: translateX(3px);
-}
-
-/* Animations */
+/* Animations remain the same */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -236,27 +209,57 @@
     }
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
+/* Additional Media Queries for Enhanced Responsiveness */
+@media (max-width: 480px) {
     .about {
-        padding: 5rem 2rem;
+        padding: 2rem 1rem;
     }
     
-    .about-grid {
-        gap: 3rem;
+    .info-card {
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+    }
+    
+    .resume-link {
+        width: 100%;
+        justify-content: center;
     }
 }
 
-@media (max-width: 968px) {
-    .about h2 {
-        font-size: 2rem;
+@media (hover: hover) {
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-card:hover h3::after {
+        width: 60px;
+    }
+
+    .resume-link:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateX(5px);
+    }
+
+    .resume-link:hover i {
+        transform: translateX(3px);
     }
 }
 
-@media (max-width: 768px) {
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 7rem;
+@media (prefers-reduced-motion: reduce) {
+    .about::before,
+    .info-card,
+    .about h2,
+    .about-grid,
+    .about-text {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .info-card:hover,
+    .resume-link:hover {
+        transform: none;
     }
 }

@@ -1,11 +1,10 @@
 /* Experience Section */
 .experience {
     position: relative;
-    min-height: 100vh; /* or whatever size you need */
+    min-height: 100vh;
     width: 100%;
- 
+    padding: 4rem 2rem;
 }
-
 
 .experience::before {
     content: '';
@@ -18,7 +17,6 @@
     transition: opacity 3s ease-out;
     z-index: -1;
     background: 
-        /* Top and bottom fades to white */
         linear-gradient(
             180deg,
             #ffffff 0%,
@@ -26,7 +24,6 @@
             transparent 85%,
             #ffffff 100%
         ),
-        /* Four corner radial gradients for each box */
         radial-gradient(
             circle at 25% 25%,
             rgba(0, 102, 255, 0.2) 0%,
@@ -47,7 +44,6 @@
             rgba(0, 153, 255, 0.2) 0%,
             transparent 35%
         ),
-        /* Center glow */
         radial-gradient(
             circle at 50% 50%,
             rgba(0, 217, 255, 0.3) 0%,
@@ -56,16 +52,14 @@
     backdrop-filter: blur(10px);
 }
 
-
-
 .experience.visible::before {
     opacity: 1;
-  }
+}
 
 .experience h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3.5rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
     color: #2d3436;
     position: relative;
     opacity: 0;
@@ -78,7 +72,7 @@
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: clamp(40px, 8vw, 60px);
     height: 3px;
     background: var(--primary-color);
     border-radius: 2px;
@@ -86,8 +80,8 @@
 
 .experience-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
     max-width: 1400px;
     margin: 0 auto;
     padding: 0.5rem;
@@ -95,8 +89,8 @@
 
 .experience-card {
     background: rgba(255, 255, 255, 0.95);
-    border-radius: 1.25rem;
-    padding: 2.5rem;
+    border-radius: 1rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
     box-shadow: 
         0 10px 30px rgba(0, 0, 0, 0.08),
         0 0 0 1px rgba(0, 0, 0, 0.05);
@@ -109,204 +103,161 @@
     animation-delay: calc(var(--card-index, 0) * 0.1s);
 }
 
-.experience-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.242);
-    opacity: 0.8;
-    transition: height 0.3s ease;
-}
-
-.experience-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.12),
-        0 0 0 1px rgba(0, 0, 0, 0.05);
-}
-
-.experience-card:hover::before {
-    background: rgba(0, 0, 0, 0.407);
-}
-
 .experience-card h3 {
-    font-size: 1.5rem;
-    color: #2d3436;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
     margin-bottom: 1rem;
-    position: relative;
-    padding-bottom: 0.75rem;
-}
-
-.experience-card h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background: var(--primary-color);
-    opacity: 0.6;
-    transition: width 0.3s ease;
-}
-
-.experience-card:hover h3::after {
-    width: 60px;
 }
 
 .experience-card h4 {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
 }
 
 .experience-card .date {
-    font-size: 0.9rem;
-    color: var(--primary-color);
-    font-weight: 500;
-    background: rgba(var(--primary-color-rgb), 0.1);
-    padding: 0.3rem 0.8rem;
-    border-radius: 1rem;
-    display: inline-block;
-    margin-bottom: 1rem;
-}
-
-.experience-card ul {
-    list-style: none;
-    margin-top: 1.5rem;
-    padding-left: 0;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .experience-card li {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-    font-size: 1rem;
-    color: #4a4a4a;
-    position: relative;
-    padding-left: 1.75rem;
-    transition: transform 0.3s ease;
-}
-
-.experience-card li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.5rem;
-    width: 6px;
-    height: 6px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-.experience-card li:hover {
-    transform: translateX(5px);
-}
-
-.experience-card li:hover::before {
-    transform: scale(1.5);
-    opacity: 1;
-}
-
-/* Skills tags */
-.experience-skills {
-    
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
 .skill-tag {
-    padding: 0.4rem 1rem;
-    color: var(--primary-color);
-    border-radius: 2rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    padding: 0.3rem 0.8rem;
 }
 
-.skill-tag:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Company logo */
-.company-logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    background: white;
-    padding: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+/* Large Desktop Screens */
+@media (min-width: 1440px) {
+    .experience {
+        padding: 6rem 4rem;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .experience-cards {
+        gap: 3rem;
     }
 }
 
-/* Responsive Design */
+/* Desktop and Tablet Landscape */
 @media (max-width: 1200px) {
     .experience {
-        padding: 5rem 2rem;
+        padding: 4rem 2rem;
     }
     
     .experience-cards {
         gap: 2rem;
     }
 
-    .experience-card {
-        padding: 2rem;
+    .company-logo {
+        width: 45px;
+        height: 45px;
     }
 }
 
-@media (max-width: 768px) {
+/* Tablet Portrait */
+@media (max-width: 900px) {
     .experience {
-        padding: 4rem 1.5rem;
-    }
-
-    .experience h2 {
-        font-size: 2rem;
-        margin-bottom: 2.5rem;
+        padding: 3.5rem 1.5rem;
     }
 
     .experience-cards {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        max-width: 600px;
     }
 
     .experience-card {
         padding: 1.75rem;
     }
+}
 
-    .experience-card h3 {
-        font-size: 1.3rem;
+/* Mobile Landscape */
+@media (max-width: 768px) {
+    .experience {
+        padding: 3rem 1rem;
     }
 
-    .experience-card h4 {
-        font-size: 1rem;
+    .experience h2 {
+        margin-bottom: 2rem;
+    }
+
+    .experience-card {
+        padding: 1.5rem;
+    }
+
+    .experience-skills {
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+    }
+
+    .skill-tag {
+        padding: 0.3rem 0.8rem;
+    }
+
+    .company-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .experience-card:hover {
+        transform: translateY(-4px);
     }
 }
 
-/* Print styles */
+/* Mobile Portrait */
+@media (max-width: 480px) {
+    .experience {
+        padding: 2.5rem 0.75rem;
+    }
+
+    .experience-card {
+        padding: 1.25rem;
+        margin: 0 0.5rem;
+    }
+
+    .experience-card li {
+        padding-left: 1.5rem;
+    }
+
+    .experience-card li::before {
+        width: 5px;
+        height: 5px;
+    }
+
+    .skill-tag {
+        padding: 0.25rem 0.7rem;
+    }
+
+    .experience-skills {
+        gap: 0.4rem;
+    }
+
+    /* Reduce hover effects for touch devices */
+    .experience-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .experience-card li:hover {
+        transform: translateX(2px);
+    }
+}
+
+/* Ensure animations work smoothly on mobile */
+@media (prefers-reduced-motion: reduce) {
+    .experience-card {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .experience-card:hover {
+        transform: none;
+    }
+
+    .experience-card li:hover {
+        transform: none;
+    }
+}
+
+/* Print styles remain the same */
 @media print {
     .experience {
         padding: 2rem 0;
