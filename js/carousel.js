@@ -182,27 +182,32 @@ form.addEventListener('submit', function(e) {
 
 //Prevent verticle and horizontal drag at same time
 
+
 const carousel = document.querySelector('.carousel-track');
 let isDragging = false, startX, scrollLeft;
 
-carousel.addEventListener('mousedown', (e) => {
+carousel.addEventListener('touchstart', (e) => {
     isDragging = true;
-    startX = e.pageX - carousel.offsetLeft;
+    startX = e.touches[0].pageX - carousel.offsetLeft;
     scrollLeft = carousel.scrollLeft;
 });
 
-carousel.addEventListener('mouseleave', () => {
+carousel.addEventListener('touchend', () => {
     isDragging = false;
 });
 
-carousel.addEventListener('mouseup', () => {
-    isDragging = false;
-});
-
-carousel.addEventListener('mousemove', (e) => {
+carousel.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
-    e.preventDefault(); // Prevent vertical scroll
-    const x = e.pageX - carousel.offsetLeft;
-    const walk = (x - startX) * 2; // Adjust scroll speed
-    carousel.scrollLeft = scrollLeft - walk;
+
+    const x = e.touches[0].pageX - carousel.offsetLeft;
+    const y = e.touches[0].pageY;
+
+    const walkX = (x - startX) * 2; // Horizontal movement
+    const walkY = Math.abs(y - startX); // Vertical movement
+
+    // Only prevent vertical scroll if horizontal movement is stronger
+    if (Math.abs(walkX) > walkY) {
+        e.preventDefault(); // Disable vertical scroll during horizontal drag
+        carousel.scrollLeft = scrollLeft - walkX;
+    }
 });
