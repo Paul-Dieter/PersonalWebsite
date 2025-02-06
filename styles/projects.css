@@ -4,6 +4,8 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    margin-bottom: -3rem;
+    
 }
 
 .projects::before {
@@ -14,7 +16,7 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 3s ease-out;
+    transition: opacity 1s ease-out;
     z-index: -1;
     background: 
         linear-gradient(
@@ -50,6 +52,7 @@
             transparent 60%
         );
     backdrop-filter: blur(10px);
+    
 }
 
 .projects.visible::before {
@@ -61,11 +64,13 @@
     width: 100%;
     overflow: visible;
     padding: 0 20px;
+    
+  
 }
 
 .draggable-info {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     color: #666;
     margin-top: 0.5rem;
     font-style: italic;
@@ -76,6 +81,8 @@
     gap: 1.5rem;
     transition: transform 0.3s ease-out;
     cursor: grab;
+    
+
 }
 
 .carousel-track.dragging {
@@ -98,6 +105,7 @@
     justify-content: space-between;
     min-height: 300px;
     margin-bottom: 1.5rem;
+    
 }
 
 .project-content {
@@ -112,6 +120,7 @@
     outline: 0.1px solid rgba(0, 0, 0, 0.094);
     height: auto;
     min-height: 100%;
+    
 }
 
 .project-content:hover {

@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         },
         {
-            threshold: 0.5,
-            rootMargin: '50px'
+            threshold: 0.8,
+            rootMargin: '100px'
         }
     );
   
     // Observe both experience and projects sections
-    const sections = document.querySelectorAll('.experience, .projects');
+    const sections = document.querySelectorAll('.experience, .projects,.certifications');
     sections.forEach(section => {
         if (section) {
             observer.observe(section);
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     );
   
-    // Observe both experience and projects sections
+
     const sections = document.querySelectorAll('.contact');
     sections.forEach(section => {
         if (section) {
@@ -54,3 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
   });
+
+  //certification
+  // Intersection Observer for fade-in effect
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Add visible class to all cards within the section
+            if (entry.target.classList.contains('certifications')) {
+                const cards = entry.target.querySelectorAll('.certification-card');
+                cards.forEach(card => card.classList.add('visible'));
+            }
+        }
+    });
+}, { threshold: 0.1 });
+
+// Observe the certifications section
+const section = document.querySelector('.certifications');
+observer.observe(section);

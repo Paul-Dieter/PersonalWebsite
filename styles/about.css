@@ -48,7 +48,7 @@
             rgba(0, 166, 255, 0.129) 0%,
             transparent 60%
         );
-    backdrop-filter: blur(10px);
+
 }
 
 .about.visible::before {
