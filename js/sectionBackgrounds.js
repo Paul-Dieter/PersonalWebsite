@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   
     // Observe both experience and projects sections
-    const sections = document.querySelectorAll('.experience, .projects,.certifications');
+    const sections = document.querySelectorAll('.experience, .projects,.certifications, .skills, .about');
     sections.forEach(section => {
         if (section) {
             observer.observe(section);
