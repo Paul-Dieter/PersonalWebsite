@@ -34,7 +34,7 @@
         ),
         radial-gradient(
             circle at 25% 25%,
-            rgba(0, 123, 255, 0.2) 0%,
+            rgba(0, 123, 255, 0.32) 0%,
             transparent 35%
         ),
         radial-gradient(
@@ -49,7 +49,7 @@
         ),
         radial-gradient(
             circle at 75% 75%,
-            rgba(0, 115, 255, 0.2) 0%,
+            rgba(0, 115, 255, 0.46) 0%,
             transparent 35%
         ),
         radial-gradient(
@@ -60,7 +60,7 @@
 }
 
 .certifications.visible::before {
-    opacity: 0.3;
+    opacity: 0.5;
 }
 
 .course-about {
